@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not p and not q:
+            return True
+        if p and q:
+            left = self.isSameTree(p.left, q.left)
+            right = self.isSameTree(p.right, q.right)
+            return left and right and p.val == q.val
+        return False
+    
+    # def postOrder(self, p, q):
+    #     if not p and not q:
+    #         return True
+    #     if p and q:
+    #         self.postOrder(p.left, q.left)
+    #         self.postOrder(p.right, q.right)
+    #         if p.val == q.val
+    #             return True
+    #     return False
